@@ -1,75 +1,159 @@
 // Task 1
-let empname = prompt("Enter Employee Name");
-console.log("Employee Name: " + empname);
-document.writeln("Welcome " + empname + "<br><br>");
 
+let name = prompt("Enter your name:");
+let age = Number(prompt("Enter your age:"));
 
-// Task 2
-let training = confirm("Are you ready to join today's JavaScript training?");
-console.log("Training Confirmation: " + training);
+console.log("My name is " + name);
+console.log("I am " + age + " years old");
 
+// Task 2 
 
-// Task 3
-alert("Welcome to Stackly Solutions!");
-console.log("Customer entered the website.");
+let degree = prompt("Did you complete degree? (yes/no)");
 
-
-// Task 4
-let studentname = prompt("Enter Student Name");
-let studentage = prompt("Enter Student Age");
-
-console.log("Student Name: " + studentname);
-console.log("Student Age: " + studentage);
-
-
-// Task 5
-let productprice = 500;
-productprice = 750;
-
-console.log("Updated Product Price: " + productprice);
-
-
-// Task 6
-let username = prompt("Enter Username");
-
-if (username == "" || username == null) {
-    console.warn("Warning: Username is empty.");
+if (degree == "yes") {
+    console.log("Degree Completed");
 } else {
-    console.log("Login Successful: " + username);
+    console.log("Degree Not Completed");
 }
 
+// Task 3 
 
-// Task 7
-alert("Website is under maintenance.");
-console.error("Error: Website is currently unavailable.");
+let mobPrice = 15000;
+let discount = 800;
 
+let finalPrice = mobPrice - discount;
+
+console.log("Final Price : " + finalPrice);
+
+// Task 4 
+
+let checkAge = Number(prompt("Enter your age:"));
+
+if (checkAge >= 18) {
+    console.log("Eligible for Vote");
+} else {
+    console.log("Not Eligible");
+}
+
+// Task 5
+
+let cart = ["Rice", "Milk", "Sugar", "Tea Powder"];
+
+console.log("First Product : " + cart[0]);
+console.log("Last Product : " + cart[cart.length - 1]);
+console.log("Total Products : " + cart.length);
+
+// Task 6 
+
+let student = {
+    name: "Bhanu",
+    age: 18,
+    course: "Java Developer"
+};
+
+console.log("Student Name : " + student.name);
+console.log("Student Course : " + student.course);
+
+// Task 7 
+
+let sal = Number(prompt("Enter Salary:"));
+let bonus = Number(prompt("Enter Bonus:"));
+
+let finalSal = sal + bonus;
+
+console.log("Total Salary : " + finalSal);
 
 // Task 8
-let feedback = prompt("How was today's JavaScript session?");
 
-console.log("Feedback: " + feedback);
+let username = "admin";
+let password = "1234";
 
-document.writeln("Thank you for your feedback!<br><br>");
+let userNameInput = prompt("Enter Username:");
+let passwordInput = prompt("Enter Password:");
 
+if (userNameInput == username && passwordInput == password) {
+    console.log("Login Successful");
+} else {
+    console.log("Invalid Credentials");
+}
 
 // Task 9
-let name = prompt("Enter Your Name");
-let city = prompt("Enter Your City");
-let language = prompt("Enter Your Favorite Programming Language");
 
-console.log("Name: " + name);
-console.log("City: " + city);
-console.log("Favorite Programming Language: " + language);
+let foodPrice = Number(prompt("Enter Food Price:"));
+let deliveryCharge = Number(prompt("Enter Delivery Charge:"));
 
+let totalBill = foodPrice + deliveryCharge;
+let gst = totalBill * 0.05;
+let grandTotal = totalBill + gst;
 
-// Task 10
-let fullname = prompt("Enter Full Name");
-let email = prompt("Enter Email");
-let mobile = prompt("Enter Mobile Number");
+console.log("Total Bill : " + totalBill);
+console.log("GST : " + gst);
+console.log("Grand Total : " + grandTotal);
 
-console.log("===== Registration Details =====");
-console.log("Name   : " + fullname);
-console.log("Email  : " + email);
-console.log("Mobile : " + mobile);
+// Task 10 - E-Commerce Product Details
 
-alert("Registration Successful!");
+let product = {
+    name: prompt("Enter Product Name:"),
+    price: Number(prompt("Enter Product Price:")),
+    brand: prompt("Enter Brand Name:"),
+    stock: prompt("Stock Available? (true/false)")
+};
+
+console.log("Product Name : " + product.name);
+console.log("Brand : " + product.brand);
+console.log("Price : " + product.price);
+console.log("Stock Available : " + product.stock);
+
+// Task 11 - Attendance System
+
+let present = confirm("Are you Present?");
+
+if (present) {
+    console.log("Attendance Marked");
+} else {
+    console.log("Absent");
+}
+
+// Task 12 - Banking Application
+
+let balance = Number(prompt("Enter Current Balance:"));
+let withdraw = Number(prompt("Enter Withdraw Amount:"));
+
+if (withdraw <= balance) {
+
+    let remaining = balance - withdraw;
+
+    console.log("Transaction Successful");
+    console.log("Remaining Balance : " + remaining);
+
+} else {
+
+    console.log("Insufficient Balance");
+
+}
+
+// Challenge Task
+
+let employee = {
+
+    name: prompt("Enter Employee Name:"),
+    age: Number(prompt("Enter Employee Age:")),
+    department: prompt("Enter Department:"),
+    salary: Number(prompt("Enter Salary:"))
+
+};
+
+console.log("Employee Name : " + employee.name);
+console.log("Employee Age : " + employee.age);
+console.log("Department : " + employee.department);
+console.log("Annual Salary : " + (employee.salary * 12));
+
+if (employee.salary > 30000) {
+
+    console.log("Senior Employee");
+
+} else {
+
+    console.log("Junior Employee");
+
+}
