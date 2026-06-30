@@ -1,159 +1,527 @@
-// Task 1
 
-let name = prompt("Enter your name:");
+
+// Task 1 - Employee Login Eligibility
+
 let age = Number(prompt("Enter your age:"));
+let hasId = true;
+let attendance = Number(prompt("Enter your attendance percentage:"));
 
-console.log("My name is " + name);
-console.log("I am " + age + " years old");
-
-// Task 2 
-
-let degree = prompt("Did you complete degree? (yes/no)");
-
-if (degree == "yes") {
-    console.log("Degree Completed");
+if (age >= 18 && hasId && attendance >= 75) {
+    console.log("Access Granted");
 } else {
-    console.log("Degree Not Completed");
+    console.log("Access Denied");
 }
 
-// Task 3 
 
-let mobPrice = 15000;
-let discount = 800;
+// Task 2 - Student Grade System
 
-let finalPrice = mobPrice - discount;
+let marks = Number(prompt("Enter your marks:"));
 
-console.log("Final Price : " + finalPrice);
-
-// Task 4 
-
-let checkAge = Number(prompt("Enter your age:"));
-
-if (checkAge >= 18) {
-    console.log("Eligible for Vote");
-} else {
-    console.log("Not Eligible");
+if (marks >= 90) {
+    console.log("Grade A+");
+}
+else if (marks >= 80) {
+    console.log("Grade A");
+}
+else if (marks >= 70) {
+    console.log("Grade B");
+}
+else if (marks >= 60) {
+    console.log("Grade C");
+}
+else {
+    console.log("Fail");
 }
 
-// Task 5
+// Task 3 - ATM Withdrawal
 
-let cart = ["Rice", "Milk", "Sugar", "Tea Powder"];
+let balance = 5000;
+let withdraw = 3000;
 
-console.log("First Product : " + cart[0]);
-console.log("Last Product : " + cart[cart.length - 1]);
-console.log("Total Products : " + cart.length);
-
-// Task 6 
-
-let student = {
-    name: "Bhanu",
-    age: 18,
-    course: "Java Developer"
-};
-
-console.log("Student Name : " + student.name);
-console.log("Student Course : " + student.course);
-
-// Task 7 
-
-let sal = Number(prompt("Enter Salary:"));
-let bonus = Number(prompt("Enter Bonus:"));
-
-let finalSal = sal + bonus;
-
-console.log("Total Salary : " + finalSal);
-
-// Task 8
-
-let username = "admin";
-let password = "1234";
-
-let userNameInput = prompt("Enter Username:");
-let passwordInput = prompt("Enter Password:");
-
-if (userNameInput == username && passwordInput == password) {
-    console.log("Login Successful");
-} else {
-    console.log("Invalid Credentials");
-}
-
-// Task 9
-
-let foodPrice = Number(prompt("Enter Food Price:"));
-let deliveryCharge = Number(prompt("Enter Delivery Charge:"));
-
-let totalBill = foodPrice + deliveryCharge;
-let gst = totalBill * 0.05;
-let grandTotal = totalBill + gst;
-
-console.log("Total Bill : " + totalBill);
-console.log("GST : " + gst);
-console.log("Grand Total : " + grandTotal);
-
-// Task 10 - E-Commerce Product Details
-
-let product = {
-    name: prompt("Enter Product Name:"),
-    price: Number(prompt("Enter Product Price:")),
-    brand: prompt("Enter Brand Name:"),
-    stock: prompt("Stock Available? (true/false)")
-};
-
-console.log("Product Name : " + product.name);
-console.log("Brand : " + product.brand);
-console.log("Price : " + product.price);
-console.log("Stock Available : " + product.stock);
-
-// Task 11 - Attendance System
-
-let present = confirm("Are you Present?");
-
-if (present) {
-    console.log("Attendance Marked");
-} else {
-    console.log("Absent");
-}
-
-// Task 12 - Banking Application
-
-let balance = Number(prompt("Enter Current Balance:"));
-let withdraw = Number(prompt("Enter Withdraw Amount:"));
-
-if (withdraw <= balance) {
-
-    let remaining = balance - withdraw;
-
+if (withdraw <= balance && withdraw % 100 === 0) {
+    balance -= withdraw;
     console.log("Transaction Successful");
-    console.log("Remaining Balance : " + remaining);
+    console.log("Remaining Balance: " + balance);
+}
+else {
+    console.log("Transaction Failed");
+}
 
-} else {
+// Task 4 - Food Ordering App
 
-    console.log("Insufficient Balance");
+let choice = Number(prompt(
+    "1. Pizza\n2. Burger\n3. Shawarma\n4. Biryani\n5. Juice\n\nEnter your choice:"
+));
+
+switch (choice) {
+
+    case 1:
+        console.log("You Ordered Pizza");
+        break;
+
+    case 2:
+        console.log("You Ordered Burger");
+        break;
+
+    case 3:
+        console.log("You Ordered Shawarma");
+        break;
+
+    case 4:
+        console.log("You Ordered Biryani");
+        break;
+
+    case 5:
+        console.log("You Ordered Juice");
+        break;
+
+    default:
+        console.log("Invalid Choice");
+}
+
+// Task 5 - E-Commerce Discount
+
+let price = Number(prompt("Enter Purchase Amount:"));
+
+let premiumUser = true;
+
+let discount = 0;
+
+if (price > 5000 && premiumUser) {
+
+    discount = price * 0.20;
+
+}
+else {
+
+    discount = price * 0.10;
 
 }
 
-// Challenge Task
+console.log("Original Price : " + price);
+console.log("Discount : " + discount);
+console.log("Final Price : " + (price - discount));
+
+// Task 6 - Attendance Report
+
+for (let i = 1; i <= 30; i++) {
+
+    console.log("Day " + i + " Present");
+
+}
+
+// Task 7 - Even Number Generator
+
+for (let i = 2; i <= 100; i++) {
+
+    if (i % 2 === 0) {
+
+        console.log(i);
+
+    }
+
+}
+
+
+// Task 8 - Mobile Number Validation
+
+let mobile = prompt("Enter Mobile Number:");
+
+if (
+    mobile.length === 10 &&
+    (
+        mobile.startsWith("6") ||
+        mobile.startsWith("7") ||
+        mobile.startsWith("8") ||
+        mobile.startsWith("9")
+    )
+) {
+
+    console.log("Valid Mobile Number");
+
+}
+else {
+
+    console.log("Invalid Mobile Number");
+
+}
+// Task 9 - Shopping Cart=
+
+let cart = [
+    "Milk",
+    "Bread",
+    "Egg",
+    "Rice",
+    "Oil"
+];
+
+console.log("First Item : " + cart[0]);
+console.log("Last Item : " + cart[cart.length - 1]);
+console.log("Total Items : " + cart.length);
+
+// Task 10 - Employee Database
 
 let employee = {
 
-    name: prompt("Enter Employee Name:"),
-    age: Number(prompt("Enter Employee Age:")),
-    department: prompt("Enter Department:"),
-    salary: Number(prompt("Enter Salary:"))
+    name: "Bhanu",
+
+    salary: 35000,
+
+    department: "Software",
+
+    experience: 3
 
 };
 
 console.log("Employee Name : " + employee.name);
-console.log("Employee Age : " + employee.age);
 console.log("Department : " + employee.department);
-console.log("Annual Salary : " + (employee.salary * 12));
+console.log("Experience : " + employee.experience + " Years");
 
-if (employee.salary > 30000) {
+// Task 11 - Company ID Generator
 
-    console.log("Senior Employee");
+let empName = "Bhanu";
+let empId = 1520;
+let empDept = "Development";
 
-} else {
+console.log(`Welcome ${empName}`);
+console.log(`Your Employee ID is EMP${empId}`);
+console.log(`Department : ${empDept}`);
 
-    console.log("Junior Employee");
+// Task 12 - User Registration
+
+let userName = prompt("Enter Your Name:");
+let userAge = Number(prompt("Enter Your Age:"));
+
+let terms = confirm("Do you accept Terms and Conditions?");
+
+if (terms) {
+
+    alert("Registered Successfully");
 
 }
+else {
+
+    alert("Registration Cancelled");
+
+}
+
+
+// =======================================
+// Task 13 - Salary Increment Calculator
+// =======================================
+
+let salary = 62500;
+
+let increment = 15;
+
+let incrementAmount = salary * increment / 100;
+
+let newSalary = salary + incrementAmount;
+
+console.log("Old Salary : " + salary);
+
+console.log("Increment Amount : " + incrementAmount);
+
+console.log("New Salary : " + newSalary);
+
+
+// Task 14 - Restaurant Bill Generator
+
+let burger = 150;
+
+let pizza = 300;
+
+let juice = 80;
+
+let subtotal = burger + pizza + juice;
+
+let gst = subtotal * 18 / 100;
+
+let grandTotal = subtotal + gst;
+
+console.log("Subtotal : " + subtotal);
+
+console.log("GST : " + gst);
+
+console.log("Grand Total : " + grandTotal);
+
+
+// Task 15 - Company Attendance Dashboard
+
+
+let companyEmployees = [
+
+    { name: "Rahul", status: "Present" },
+
+    { name: "Arun", status: "Absent" },
+
+    { name: "Kamal", status: "Present" },
+
+    { name: "Priya", status: "Present" },
+
+    { name: "Divya", status: "Absent" }
+
+];
+
+let present = 0;
+
+let absent = 0;
+
+console.log("===== Present Employees =====");
+
+for (let emp of companyEmployees) {
+
+    if (emp.status === "Present") {
+
+        console.log(emp.name);
+
+        present++;
+
+    }
+
+}
+
+console.log("===== Absent Employees =====");
+
+for (let emp of companyEmployees) {
+
+    if (emp.status === "Absent") {
+
+        console.log(emp.name);
+
+        absent++;
+
+    }
+
+}
+
+console.log("Total Present : " + present);
+
+console.log("Total Absent : " + absent);
+
+
+
+// Mini Project - Employee Management System
+// =======================================
+
+let employeeList = [];
+let menuChoice;
+
+do {
+
+menuChoice = Number(prompt("===== Employee Management System =====\n\n1. Add Employee\n2. View All Employees\n3. Search Employee by ID\n4. Calculate Salary with Bonus\n5. Check Experience Level\n6. Delete Employee\n7. Exit\n\nEnter Your Choice:"));
+
+switch(menuChoice){
+
+case 1:
+
+let id = Number(prompt("Enter Employee ID:"));
+let name = prompt("Enter Employee Name:");
+let department = prompt("Enter Department:");
+let salary = Number(prompt("Enter Salary:"));
+let experience = Number(prompt("Enter Experience (Years):"));
+
+let employee = {
+id:id,
+name:name,
+department:department,
+salary:salary,
+experience:experience
+};
+
+employeeList.push(employee);
+
+alert("Employee Added Successfully");
+
+break;
+
+case 2:
+
+if(employeeList.length===0){
+
+alert("No Employees Found");
+
+}
+else{
+
+console.clear();
+
+console.log("===== Employee List =====");
+
+for(let emp of employeeList){
+
+console.log(`ID : ${emp.id}`);
+console.log(`Name : ${emp.name}`);
+console.log(`Department : ${emp.department}`);
+console.log(`Salary : ${emp.salary}`);
+console.log(`Experience : ${emp.experience} Years`);
+console.log("-------------------------");
+
+}
+
+alert("Employee Details Printed in Console");
+
+}
+
+break;
+
+case 3:
+
+let searchId = Number(prompt("Enter Employee ID:"));
+
+let found = false;
+
+for(let emp of employeeList){
+
+if(emp.id===searchId){
+
+alert(`Employee Found
+
+Name : ${emp.name}
+Department : ${emp.department}
+Salary : ${emp.salary}
+Experience : ${emp.experience} Years`);
+
+found=true;
+
+break;
+
+}
+
+}
+
+if(!found){
+
+alert("Employee Not Found");
+
+}
+
+break;
+
+case 4:
+
+let bonusId = Number(prompt("Enter Employee ID:"));
+
+let salaryFound = false;
+
+for(let emp of employeeList){
+
+if(emp.id===bonusId){
+
+let bonus = emp.salary*0.10;
+
+let totalSalary = emp.salary+bonus;
+
+alert(`Employee : ${emp.name}
+
+Salary : ${emp.salary}
+
+Bonus : ${bonus}
+
+Total Salary : ${totalSalary}`);
+
+salaryFound=true;
+
+break;
+
+}
+
+}
+
+if(!salaryFound){
+
+alert("Employee Not Found");
+
+}
+
+break;
+case 5:
+
+let expId = Number(prompt("Enter Employee ID:"));
+
+let expFound = false;
+
+for (let emp of employeeList) {
+
+    if (emp.id === expId) {
+
+        let level = "";
+
+        if (emp.experience >= 10) {
+            level = "Senior";
+        }
+        else if (emp.experience >= 5) {
+            level = "Mid-Level";
+        }
+        else {
+            level = "Junior";
+        }
+
+        alert(`Employee : ${emp.name}
+
+Experience : ${emp.experience} Years
+
+Level : ${level}`);
+
+        expFound = true;
+
+        break;
+
+    }
+
+}
+
+if (!expFound) {
+
+    alert("Employee Not Found");
+
+}
+
+break;
+
+
+case 6:
+
+let deleteId = Number(prompt("Enter Employee ID to Delete:"));
+
+let deleted = false;
+
+for (let i = 0; i < employeeList.length; i++) {
+
+    if (employeeList[i].id === deleteId) {
+
+        employeeList.splice(i, 1);
+
+        deleted = true;
+
+        alert("Employee Deleted Successfully");
+
+        break;
+
+    }
+
+}
+
+if (!deleted) {
+
+    alert("Employee Not Found");
+
+}
+
+break;
+
+
+case 7:
+
+alert("Thank You!");
+
+break;
+
+
+default:
+
+alert("Invalid Choice");
+
+}
+
+} while (menuChoice !== 7);
