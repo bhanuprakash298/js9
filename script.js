@@ -1,67 +1,209 @@
 
+// API store cart project
 
-// task =1 employee age calculator
-
-let data1=new Date();
-data1.setFullYear(2003);
-data1.setMonth(5);
-data1.setDate(25);
-console.log(data1.getFullYear());
-
-let curdate=new Date();
-
-let age=curdate.getFullYear()-data1.getFullYear();
-console.log("Employee age ,",age,"years");
-
-// task =2 online appointment scheduler
-
-let date2=new Date();
-date2.setFullYear(2027);
-date2.setMonth(11);
-date2.setDate(15);
-date2.setHours(10);
-date2.setMinutes(30);
-console.log("appointment updated");
-console.log(date2.toLocaleString());
-
-// task =3  Multi-Country Meeting Time
-
-let data3=new Date();
-console.log("India time zone");
-console.log(data3.toLocaleString("en-us",{timeZone: "Asia/kolkata"}));
-console.log("New York Time:");
-console.log(data3.toLocaleString("en-US", {timeZone: "America/New_York"}));
-console.log("tokyo time zone:");
-console.log(data3.toLocaleString("en-us",{timeZone:"Asia/Tokyo"}));
-
-// task =4  Product Warranty Expiry
-
-let today=new Date();
-console.log("purcahse date :",today);
-let expdate=new Date();
-expdate.setFullYear(2028);
-expdate.setMonth(6);
-expdate.setDate(9);
-console.log("expirey date :",expdate);
-
-// task =5  Digital Clock
-
-setInterval(()=>
+let products = [];
+let cart = [];
+let productContainer = document.getElementById("products");
+let search = document.getElementById("search");
+fetch("https://fakestoreapi.com/products")
+.then(function(response)
 {
-    let clock=new Date();
-    console.log(clock.toLocaleTimeString());
-    
-},1000);
+    return response.json();
+})
+.then(function(data)
+{
+    products = data;
+    displayProducts(products);
+
+});
+
+function displayProducts(items){
+    productContainer.innerHTML = "";
+    if(items.length===0)
+        {
+        productContainer.innerHTML=
+        "<h2 class='notFound'>No Products Found</h2>";
+        return;
+    }
+    items.forEach(function(product){
+     productContainer.innerHTML += `
+<div class="card">
+    <img
+        src="${product.image}"
+        class="productImage"
+        data-id="${product.id}"
+    >
+    <h3>${product.title}</h3>
+    <p>$${product.price}</p>
+    <button
+        class="cartBtn"
+        data-id="${product.id}"
+    >
+        add to cart
+    </button>
+
+</div>
+
+`;
+    });
+}
+
+// task 1 : product search
 
 
 
+search.addEventListener("keyup",function(){
+    let text = search.value.toLowerCase();
+    let filtered = products.filter(function(product){
+        return product.title
+        .toLowerCase()
+        .includes(text);
+
+    });
+    displayProducts(filtered);
+});
+
+
+// Task 2 : Category Filter
+
+
+let buttons =document.querySelectorAll(".buttons button");
+buttons.forEach(function(button)
+{
+button.addEventListener("click",function(){
+let category = button.dataset.category;
+if(category=="all"){
+displayProducts(products);
+}
+
+else
+{
+let filtered =products.filter(function(product){
+return product.category==category;
+});
+
+displayProducts(filtered);
+}
+});
+});
 
 
 
+// taask ==3  Price Sorting
+
+
+let lowHigh =document.getElementById("lowHigh");
+let highLow =document.getElementById("highLow");
+lowHigh.addEventListener("click",()=>{
+let sorted=[...products];
+sorted.sort((a,b)=>a.price-b.price);
+displayProducts(sorted);
+});
+highLow.addEventListener("click",()=>{
+let sorted=[...products];
+sorted.sort((a,b)=>b.price-a.price);
+displayProducts(sorted);
+});
 
 
 
+// task == 4 Product Details Modal
 
 
 
+let modal = document.getElementById("modal");
+let modalBody = document.getElementById("modalBody");
+let closeBtn = document.getElementById("close");
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("productImage")) {
+        let id = e.target.dataset.id;
+        let product = products.find(function (item) {
+            return item.id == id;
+        });
+        modal.style.display = "block";
+        modalBody.innerHTML = `
+            <img src="${product.image}" width="200">
+            <h2>${product.title}</h2>
+            <p>${product.description}</p>
+            <h3>Price : $${product.price}</h3>
+            <p><b>Category :</b> ${product.category}</p>
+            <p><b>Rating :</b> ⭐ ${product.rating.rate}</p>
+        `;
+    }
+});
 
+closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+window.addEventListener("click", function (e) {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
+
+
+// task =5 == Shopping Cart
+
+let cartDiv = document.getElementById("cart");
+let cartCount = document.getElementById("cartCount");
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("cartBtn")) {
+        let id = e.target.dataset.id;
+        let product = products.find(function (item) {
+            return item.id == id;
+        });
+        let exist = cart.find(function (item) 
+        {
+            return item.id == id;
+        });
+        if (exist) {
+            exist.quantity++;
+        }
+        else {
+            cart.push({
+                ...product,
+                quantity: 1
+            });
+
+        }
+
+        displayCart();
+    }
+});
+
+function displayCart() {
+    cartDiv.innerHTML = "";
+    let grandTotal = 0;
+    cart.forEach(function (item) {
+        let total = item.price * item.quantity;
+        grandTotal += total;
+        cartDiv.innerHTML += `
+            <div class="cartItem">
+                <div>
+                    <h4>${item.title}</h4>
+
+                    <p>Quantity : ${item.quantity}</p>
+                </div>
+                <div>
+                    <h4>$${total.toFixed(2)}</h4>
+                </div>
+            </div>
+
+        `;
+    });
+
+    let totalItems = cart.reduce(function (sum, item) 
+    {
+        return sum + item.quantity;
+    }, 0);
+
+    cartCount.innerHTML = "Items : " + totalItems;
+    cartDiv.innerHTML += `
+        <h2 class="grandTotal">
+
+            Grand Total : $${grandTotal.toFixed(2)}
+
+        </h2>
+    `;
+}

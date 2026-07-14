@@ -1,0 +1,202 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* Task ==1 */
+
+#search{
+    display:block;
+    width:350px;
+    margin:20px auto;
+    padding:10px;
+    font-size:16px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+/*Task ==2*/
+
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.buttons button{
+    padding:10px 15px;
+    border:none;
+    background:royalblue;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    font-size:15px;
+}
+
+.buttons button:hover{
+    background:darkblue;
+}
+
+/* Task =3 */
+
+.sortButtons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.sortButtons button{
+    padding:10px 15px;
+    border:none;
+    background:green;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    font-size:15px;
+}
+
+.sortButtons button:hover{
+    background:darkgreen;
+}
+
+#products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.card img{
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    cursor:pointer;
+}
+
+.card h3{
+    margin:10px 0;
+    font-size:16px;
+    height:45px;
+    overflow:hidden;
+}
+
+.card p{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.card button{
+    padding:10px 15px;
+    border:none;
+    background:orange;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.card button:hover{
+    background:darkorange;
+}
+
+.notFound{
+    grid-column:1/-1;
+    text-align:center;
+    color:red;
+    font-size:30px;
+}
+
+
+/* task ==4  */
+
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+}
+
+.modalContent{
+    width:500px;
+    margin:60px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    position:relative;
+}
+
+.modalContent img{
+    width:220px;
+    display:block;
+    margin:auto;
+}
+
+#close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* task ==5*/
+
+
+
+.cartHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:20px 0;
+}
+
+#cart{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:25px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.cartItem{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+    border-bottom:1px solid #ddd;
+    padding-bottom:10px;
+}
+
+.grandTotal{
+    margin-top:15px;
+    color:green;
+    font-size:22px;
+    text-align:right;
+}
